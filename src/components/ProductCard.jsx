@@ -1,13 +1,18 @@
 /* eslint-disable react/prop-types */
 import { useDispatch } from "react-redux"
 import { addToCart } from "../functions/cartSlice"
-import { useState } from "react"
+import {  useState } from "react"
+import { FaHeart } from "react-icons/fa";
+import { addToFavourite, removeFromFavourite } from "../functions/favouriteSlice";
+import { IoMdClose } from "react-icons/io";
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item,isFavourite }) => {
   // console.log(item)
-  const { brand, category, description, discountPercentage, images, price, rating, stock, thumbnail, title } = item
+  const {  discountPercentage, images, price, title } = item
   // console.log(images)
   const [quntity, setQuntity] = useState(1)
+
+  
   
   const dispatch = useDispatch()
 
@@ -28,7 +33,7 @@ const ProductCard = ({ item }) => {
         </div>
         <div className="flex justify-around">
           <button className="bg-sky-400 rounded-md px-3 py-1 text-white" onClick={() => handleAddToCart(item)}>Add To Cart</button>
-          <button className="bg-sky-400 rounded-md px-3 py-1 text-white">Heart</button>
+          <button className="bg-sky-400 rounded-md px-3 py-1 text-white" onClick={()=> isFavourite === "yes" ? dispatch(removeFromFavourite(item.id)) : dispatch(addToFavourite(item))}>{isFavourite === "yes" ? <IoMdClose />  :<FaHeart/>}</button>
         </div>
       </div>
     </div>

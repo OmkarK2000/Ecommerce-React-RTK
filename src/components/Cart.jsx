@@ -3,10 +3,12 @@ import { handleQuntity, removeFromCart } from "../functions/cartSlice"
 
 const Cart = () => {
   const { cartProducts } = useSelector((state) => state.cart)
-  console.log(cartProducts)
+  console.log(cartProducts.length)
   const dispatch = useDispatch()
 
-
+  if(cartProducts.length <= 0){
+    return <h1 className="text-center text-2xl font-bold">Cart is empty</h1>
+  }
 
   return (
     <div className="mx-40">
@@ -32,7 +34,7 @@ const Cart = () => {
                 <td className="border p-3">{item.brand}</td>
                 <td className="border p-3">{item.description}</td>
                 <td className="border p-3">{item.category}</td>
-                <td className="border p-3">${item.price}</td>
+                <td className="border p-3">${item.totalPrice}</td>
                 <td className="border p-3"><div className="flex">
                   <button className="bg-sky-400 rounded-md w-8  text-2xl text-white" onClick={()=>dispatch(handleQuntity({id: item.id, type : "DEC"}))}>-</button>
                   <span className="mx-2">{item.quntity}</span>

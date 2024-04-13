@@ -7,7 +7,7 @@ import ProductCard from "./ProductCard"
 const Home = () => {
   const dispatch = useDispatch()
   const { products, loading, error } = useSelector((state) => state.products)
-console.log(products)
+// console.log(products)
   useEffect(() => {
     dispatch(fetchProducts(12))
   }, [])
@@ -28,7 +28,6 @@ console.log(products)
         .map((item) => (
           <ProductCard key={item.id} item={item} />
         ))
-        
         }
       </ul>
     </div>

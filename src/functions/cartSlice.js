@@ -41,15 +41,18 @@ export const cartSlice = createSlice({
     handleQuntity : (state, action) => {
       state.cartProducts = state.cartProducts.map((item)=>{
         if(item.id === action.payload.id){
+          let tempTotalPrice = item.totalPrice
           if(action.payload.type === "INC"){
             item.quntity++
+             tempTotalPrice = item.quntity * item.price
           }
           if(action.payload.type === "DEC"){
             if(item.quntity > 1){
               item.quntity--
+              tempTotalPrice = item.quntity * item.price
             }
           }
-          return {...item}
+          return {...item,  totalPrice : tempTotalPrice}
         }else{
           return item
         }
