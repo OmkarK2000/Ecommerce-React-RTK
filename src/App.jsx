@@ -8,6 +8,7 @@ import Login from "./components/Login"
 import Cart from "./components/Cart"
 import Search from "./components/Search"
 import Favourite from "./components/Favourite"
+import SingleProduct from "./components/SingleProduct"
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/cart" element={<Cart/>} />
           <Route path="/search" element={<Search/>} />
           <Route path="/favourite" element={<Favourite/>} />
+          <Route path="/product/:id" element={<SingleProduct/>} />
         </Routes>
       </BrowserRouter>
     </div>

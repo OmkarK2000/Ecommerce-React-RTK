@@ -5,25 +5,24 @@ import {  useState } from "react"
 import { FaHeart } from "react-icons/fa";
 import { addToFavourite, removeFromFavourite } from "../functions/favouriteSlice";
 import { IoMdClose } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ item,isFavourite }) => {
   // console.log(item)
-  const {  discountPercentage, images, price, title } = item
+  const {  discountPercentage, thumbnail, price, title,id } = item
   // console.log(images)
-  const [quntity, setQuntity] = useState(1)
-
-  
-  
+  const [quantity, setQuantity] = useState(1)
+  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const handleAddToCart = (item) => {
-    const totalPrice = quntity * item.price
-    dispatch(addToCart({ ...item, quntity: quntity, totalPrice }))
+    const totalPrice = quantity * item.price
+    dispatch(addToCart({ ...item, quantity: quantity, totalPrice }))
   }
   return (
-    <div className="w-60 py-3 mx-2  my-2 px-2 border flex flex-col justify-center items-center">
+    <div className="w-60 py-3 mx-2  my-2 px-2 border flex flex-col justify-center items-center" >
       <div className="w-44 h-44 ">
-        <img className="w-full h-full object-contain" src={images[0]} alt="" />
+        <img className="w-full h-full object-contain cursor-pointer" src={thumbnail} alt="" onClick={()=> navigate(`/product/${id}`)} />
       </div>
       <div className="w-full space-y-2">
         <p className="text-md font-bold">{title}</p>

@@ -18,10 +18,10 @@ export const cartSlice = createSlice({
       if (isItemInCart) {
         state.cartProducts = state.cartProducts.map((item)=>{
           if(item.id === action.payload.id){
-            let tempQuntity = item.quntity + action.payload.quntity
-            let tempTotalPrice = tempQuntity * item.price
+            let tempQuantity = item.quantity + action.payload.quantity
+            let tempTotalPrice = tempQuantity * item.price
             return{
-              ...item , quntity : tempQuntity, totalPrice : tempTotalPrice
+              ...item , quantity : tempQuantity, totalPrice : tempTotalPrice
             }
           }else{
             return item
@@ -38,18 +38,18 @@ export const cartSlice = createSlice({
       state.cartProducts = state.cartProducts.filter(item => item.id !== action.payload.id)
     },
 
-    handleQuntity : (state, action) => {
+    handleQuantity : (state, action) => {
       state.cartProducts = state.cartProducts.map((item)=>{
         if(item.id === action.payload.id){
           let tempTotalPrice = item.totalPrice
           if(action.payload.type === "INC"){
-            item.quntity++
-             tempTotalPrice = item.quntity * item.price
+            item.quantity++
+             tempTotalPrice = item.quantity * item.price
           }
           if(action.payload.type === "DEC"){
-            if(item.quntity > 1){
-              item.quntity--
-              tempTotalPrice = item.quntity * item.price
+            if(item.quantity > 1){
+              item.quantity--
+              tempTotalPrice = item.quantity * item.price
             }
           }
           return {...item,  totalPrice : tempTotalPrice}
@@ -61,5 +61,5 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart, handleQuntity } = cartSlice.actions;
+export const { addToCart, removeFromCart, handleQuantity } = cartSlice.actions;
 export default cartSlice.reducer;

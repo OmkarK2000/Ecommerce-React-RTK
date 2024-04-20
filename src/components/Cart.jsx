@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-import { handleQuntity, removeFromCart } from "../functions/cartSlice"
+import { handleQuantity, removeFromCart } from "../functions/cartSlice"
 
 const Cart = () => {
   const { cartProducts } = useSelector((state) => state.cart)
@@ -36,9 +36,9 @@ const Cart = () => {
                 <td className="border p-3">{item.category}</td>
                 <td className="border p-3">${item.totalPrice}</td>
                 <td className="border p-3"><div className="flex">
-                  <button className="bg-sky-400 rounded-md w-8  text-2xl text-white" onClick={()=>dispatch(handleQuntity({id: item.id, type : "DEC"}))}>-</button>
-                  <span className="mx-2">{item.quntity}</span>
-                  <button className="bg-sky-400 rounded-md w-8  text-2xl text-white" onClick={()=>dispatch(handleQuntity({id: item.id , type : "INC"}))}>+</button></div></td>
+                  <button className="bg-sky-400 rounded-md w-8  text-2xl text-white" onClick={()=>dispatch(handleQuantity({id: item.id, type : "DEC"}))}>-</button>
+                  <span className="mx-2">{item.quantity}</span>
+                  <button className="bg-sky-400 rounded-md w-8  text-2xl text-white" onClick={()=>dispatch(handleQuantity({id: item.id , type : "INC"}))}>+</button></div></td>
                 <td className="border p-3"><button className="bg-sky-400 rounded-md px-3 py-1 text-white" onClick={() => dispatch(removeFromCart(item))}>X</button></td>
               </tr>
             })}
