@@ -57,7 +57,7 @@ const SingleProduct = () => {
             <button className="bg-sky-400 rounded-md px-3 py-1 text-white" onClick={() => setQuantity(prev => prev + 1)}>+</button>
           </div>
           <div className="mt-4">
-            <button className="text-sky-400 rounded-md px-3 py-1 bg-white border-sky-400 border-2" onClick={()=>dispatch(handleAddToCart(selectedProduct))}>Add To Cart</button>
+            <button className="text-sky-400 rounded-md px-3 py-1 bg-white border-sky-400 border-2" onClick={()=>handleAddToCart(selectedProduct)}>Add To Cart</button>
           </div>
         </div>
       </div>
